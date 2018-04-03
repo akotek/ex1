@@ -5,7 +5,7 @@
 #define ITERATION_DEFAULT 1000
 #define TIME_FACTOR 1000000.0
 #define ITERATION_FACTOR 5
-#define MICRO_TO_NANO_FACTOR 1000
+#define MICRO_TO_NANO_FACTOR 1000.0
 
 timeval timeStruct = timeval();
 void func(){};
