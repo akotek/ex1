@@ -78,6 +78,7 @@ double osm_function_time(unsigned int iterations)
         func();
         func();
     }
+
     osm_finalizer();
     return (t2-t1)*MICRO_TO_NANO_FACTOR;
 
