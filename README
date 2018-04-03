@@ -1,5 +1,10 @@
-kotek
-abadi
+kotek, yoavabadi
+Aviv Kotek (203973490), Yoav Abadi (305613903)
+EX: 1
+
+FILES:
+osm.cpp -- osm implementation
+osm.h -- osm header file
 
 -------------
 Assignment 1
