@@ -1,6 +1,6 @@
 
 #include "osm.h"
-#include <evdns.h>
+#include <sys/time.h>
 
 #define ITERATION_DEFAULT 1000
 #define TIME_FACTOR 1000000.0
