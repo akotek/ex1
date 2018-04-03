@@ -1,11 +1,11 @@
 
 #include "osm.h"
-#include <evdns.h>
+#include <sys/time.h>
 
 #define ITERATION_DEFAULT 1000
 #define TIME_FACTOR 1000000.0
 #define ITERATION_FACTOR 5
-#define MICRO_TO_NANO_FACTOR 1000
+#define MICRO_TO_NANO_FACTOR 1000.0
 
 timeval timeStruct = timeval();
 void func(){};
@@ -18,7 +18,8 @@ double t1, t2;
 * Pay attention: this function may be empty for some desings. It's fine.
 * Returns 0 uppon success and -1 on failure
 */
-int osm_init(){
+int osm_init()
+{
 
     gettimeofday(&timeStruct, nullptr);
     t1=timeStruct.tv_usec + (timeStruct.tv_usec/TIME_FACTOR);
@@ -47,7 +48,7 @@ double osm_operation_time(unsigned int iterations)
 {
     osm_init();
     iterations = iterations == 0 ? ITERATION_DEFAULT : iterations;
-    unsigned int x,x1,x2,x3,x4,x5;
+    unsigned int x1,x2,x3,x4,x5;
     for(unsigned int i = 0; i < iterations; i += ITERATION_FACTOR)
     {
         x1 += i+1;
