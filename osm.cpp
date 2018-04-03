@@ -5,6 +5,8 @@
 
 #include <evdns.h>
 
+timeval timeStruct = timeval();
+
 /* Initialization function that the user must call
 * before running any other library function.
 * The function may, for example, allocate memory or
@@ -14,18 +16,15 @@
 */
 int osm_init(){
 
-    timeval tim = timeval();
+    gettimeofday(&timeStruct, nullptr);
+    double t1=timeStruct.tv_usec;
 
-    gettimeofday(&tim, nullptr);
+    gettimeofday(&timeStruct, nullptr);
+    double t2=timeStruct.tv_usec;
 
-    double t1=tim.tv_usec;
-
-    gettimeofday(&tim, nullptr);
-    double t2=tim.tv_usec;
     printf("%.6lf micro_seconds elapsed\n", t2-t1);
     return 0;
 }
-
 /* finalizer function that the user must call
  * after running any other library function.
  * The function may, for example, free memory or

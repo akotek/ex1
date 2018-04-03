@@ -7,9 +7,15 @@ Assignment 1
 
 Analysing result of command 'strace WhatIDo 0' (with argument 0):
 -------------------------------------------------------------
+mkdir("Welcome", 0775)                  = 0
+mkdir("Welcome/To", 0775)               = 0
+
+This command creates Welcome directory successfully (return value = 0)
+And creates Inner 'To' directory successfully.
+-------------------------------------------------------------
 open("Welcome/To/OS2018", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
 
-This command uses the open() sys-ca;;
+This command uses the open() sys-call:
 it opens the file OS2018  in folder 'Welcome/To with flags of
 'write' and 'create' and with O_trunc which will truncate file to 0 length.
 '= 3' means the function returned FILE DESCRIPTOR is 3. In case of failure
