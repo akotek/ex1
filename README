@@ -12,6 +12,8 @@ mkdir("Welcome/To", 0775)               = 0
 
 This command creates Welcome directory successfully (return value = 0)
 And creates Inner 'To' directory successfully.
+
+mode 775 is giving you permission to the file.
 -------------------------------------------------------------
 open("Welcome/To/OS2018", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
 
@@ -20,6 +22,13 @@ it opens the file OS2018  in folder 'Welcome/To with flags of
 'write' and 'create' and with O_trunc which will truncate file to 0 length.
 '= 3' means the function returned FILE DESCRIPTOR is 3. In case of failure
 we will have =-1, so this is not a failure.
+
+flags -
+O_WRONLY - Open for writing only.
+O_CREAT - If the file exists, this flag has no effect, Otherwise, the file is created.
+O_TRUNC - if the file exists and is a regular file, and the file is successfully opened by O_WRONLY,
+ its length is truncated to 0 and the mode and owner are unchanged.
+
 --------------------------------------------------------------
 fstat(3, {st_mode=S_IFREG|0644, st_size=0, ...}) = 0
 
