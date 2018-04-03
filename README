@@ -6,7 +6,6 @@ Assignment 1
 -------------
 
 Analysing result of command 'strace WhatIDo 0' (with argument 0):
-
 -------------------------------------------------------------
 open("Welcome/To/OS2018", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
 
