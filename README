@@ -1,0 +1,51 @@
+kotek
+abadi
+
+-------------
+Assignment 1
+-------------
+
+Analysing result of command 'strace WhatIDo 0' (with argument 0):
+
+-------------------------------------------------------------
+open("Welcome/To/OS2018", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+
+This command uses the open() sys-ca;;
+it opens the file OS2018  in folder 'Welcome/To with flags of
+'write' and 'create' and with O_trunc which will truncate file to 0 length.
+'= 3' means the function returned FILE DESCRIPTOR is 3. In case of failure
+we will have =-1, so this is not a failure.
+--------------------------------------------------------------
+fstat(3, {st_mode=S_IFREG|0644, st_size=0, ...}) = 0
+
+This command uses the fstat() sys-call:
+Which returns information about the 'os2018' file,
+it returned 0 means the sys-call completed successfully.
+--------------------------------------------------------------
+write(3, "kotek\nIf you haven't read the co"..., 74) = 74
+
+Program calls write sys-call and tries to write 74 characters to OS2018 file,
+about the course guidelines, and it did succeed (we can see by the
+descriptor id that has been returned != -1).
+--------------------------------------------------------------
+close(3)                                = 0
+
+This system call succeed closing the file,
+as return value is 0.
+--------------------------------------------------------------
+unlink("Welcome/To/OS2018")             = 0
+
+This sys-call deleted the file OS2018 from the file system.
+this call also succeeded.
+--------------------------------------------------------------
+rmdir("Welcome/To/")                    = 0
+rmdir("Welcome/")                       = 0
+
+Both sys-calls deletes given directories (Welcome and To) and succeed.
+--------------------------------------------------------------
+exit_group(0)                           = ?
++++ exited with 0 +++
+
+This sys-call exit all threads in the process and terminates them.
+We can see that it has succeeded.
+--------------------------------------------------------------
