@@ -3,7 +3,7 @@
 
 int main()
 {
-    osm_init();
-    std::cout << "Hello, World!" << std::endl;
+
+    std::cout << "time: " << osm_syscall_time(1000000) <<std::endl;
     return 0;
 }
