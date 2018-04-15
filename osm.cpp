@@ -21,8 +21,9 @@ double t1, t2;
 int osm_init()
 {
 
-    gettimeofday(&timeStruct, nullptr);
+    int time = gettimeofday(&timeStruct, nullptr);
     t1=timeStruct.tv_usec + (timeStruct.tv_usec/TIME_FACTOR);
+    if (time == -1) return -1;
     return 0;
 }
 
@@ -34,8 +35,9 @@ int osm_init()
  */
 int osm_finalizer()
 {
-    gettimeofday(&timeStruct, nullptr);
+    int time = gettimeofday(&timeStruct, nullptr);
     t2=timeStruct.tv_usec + (timeStruct.tv_usec/TIME_FACTOR);
+    if (time == -1) return -1;
     return 0;
 }
 
@@ -47,7 +49,10 @@ int osm_finalizer()
 double osm_operation_time(unsigned int iterations)
 {
     osm_init();
+
     iterations = iterations == 0 ? ITERATION_DEFAULT : iterations;
+    int mod = iterations % 10;
+    if (mod != 0) iterations = iterations + (10-mod);
     unsigned int x1,x2,x3,x4,x5;
     for(unsigned int i = 0; i < iterations; i += ITERATION_FACTOR)
     {
@@ -71,6 +76,8 @@ double osm_function_time(unsigned int iterations)
 {
     osm_init();
     iterations = iterations == 0 ? ITERATION_DEFAULT : iterations;
+    int mod = iterations % 10;
+    if (mod != 0) iterations = iterations + (10-mod);
     for(unsigned int i = 0; i < iterations; i += ITERATION_FACTOR)
     {
         func();
@@ -94,6 +101,8 @@ double osm_syscall_time(unsigned int iterations)
 {
     osm_init();
     iterations = iterations == 0 ? ITERATION_DEFAULT : iterations;
+    int mod = iterations % 10;
+    if (mod != 0) iterations = iterations + (10-mod);
     for(unsigned int i = 0; i < iterations; i += ITERATION_FACTOR)
     {
         OSM_NULLSYSCALL;
